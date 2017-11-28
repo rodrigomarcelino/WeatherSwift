@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O7I-Xw-HpZ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Item 2-->
+        <scene sceneID="67n-ae-Hva">
+            <objects>
+                <viewController id="m4N-aE-Ehr" customClass="ChooseCityViewController" customModule="WeatherSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jQ8-Y3-s77" customClass="C">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gez-Zb-lzW">
+                                <rect key="frame" x="108" y="70" width="159" height="79"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G1o-it-4Sv">
+                                <rect key="frame" x="16" y="180" width="108" height="75"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q7m-ob-Evb">
+                                <rect key="frame" x="236" y="180" width="95" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GzT-CQ-C6w">
+                                <rect key="frame" x="16" y="316" width="85" height="105"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ClZ-eO-9sw">
+                                <rect key="frame" x="236" y="323" width="95" height="98"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="L2w-f5-Pgz">
+                                <rect key="frame" x="0.0" y="30" width="375" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="m4N-aE-Ehr" id="pN9-os-0ro"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="L2w-f5-Pgz" firstAttribute="top" secondItem="oBh-tA-eJ3" secondAttribute="top" constant="10" id="Kjn-dL-lNX"/>
+                            <constraint firstItem="L2w-f5-Pgz" firstAttribute="leading" secondItem="oBh-tA-eJ3" secondAttribute="leading" id="oNa-ji-huK"/>
+                            <constraint firstItem="L2w-f5-Pgz" firstAttribute="trailing" secondItem="oBh-tA-eJ3" secondAttribute="trailing" id="ry1-aV-jgn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oBh-tA-eJ3"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 2" id="c3X-gi-VLO"/>
+                    <connections>
+                        <outlet property="cityLabel" destination="Gez-Zb-lzW" id="VJW-oz-L5L"/>
+                        <outlet property="humidityLabel" destination="q7m-ob-Evb" id="wEi-AO-tKF"/>
+                        <outlet property="maxTempLabel" destination="GzT-CQ-C6w" id="wnG-75-eEN"/>
+                        <outlet property="minTempLabel" destination="ClZ-eO-9sw" id="ca5-ES-gOF"/>
+                        <outlet property="searchBar" destination="L2w-f5-Pgz" id="fVy-fr-b7s"/>
+                        <outlet property="searchDisplayController" destination="odC-6g-xDI" id="DNC-oq-5Hn"/>
+                        <outlet property="tempLabel" destination="G1o-it-4Sv" id="4If-Ok-S6f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sjm-tg-3S6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="odC-6g-xDI">
+                    <connections>
+                        <outlet property="delegate" destination="m4N-aE-Ehr" id="18v-7Z-ihj"/>
+                        <outlet property="searchContentsController" destination="m4N-aE-Ehr" id="ujF-Hs-SSo"/>
+                        <outlet property="searchResultsDataSource" destination="m4N-aE-Ehr" id="7VB-dR-kvg"/>
+                        <outlet property="searchResultsDelegate" destination="m4N-aE-Ehr" id="TJq-3n-jPC"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="160.80000000000001" y="340.47976011994007"/>
+        </scene>
+        <!--Item 1-->
+        <scene sceneID="K4c-Iu-Tb1">
+            <objects>
+                <viewController id="o1D-uV-11P" customClass="ActualLocationViewController" customModule="WeatherSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jf0-mv-hNv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="k3k-Kj-zFH"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item 1" id="vSo-du-4wX"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="J4j-vD-awu" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="162" y="-323"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="hnQ-fY-oRo">
+            <objects>
+                <tabBarController id="O7I-Xw-HpZ" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="qiV-PK-Xbp">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="o1D-uV-11P" kind="relationship" relationship="viewControllers" id="7fX-8O-Bxa"/>
+                        <segue destination="m4N-aE-Ehr" kind="relationship" relationship="viewControllers" id="xrR-da-YPg"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wW5-ix-xJl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-791" y="9"/>
+        </scene>
+    </scenes>
+</document>

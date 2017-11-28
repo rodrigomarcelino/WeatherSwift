@@ -11,47 +11,50 @@ import Moya
 import Result
 
 enum WeatherService {
-    case weather()
+    case weather(String)
 }
 
 extension WeatherService: TargetType{
     //    var city: String!
     //    city = "city"
     var baseURL: URL {
-        return URL(string: "http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&APPID=4899f0f33f91ac6422946c7aaf7598d6")!
+        switch self {
+        case .weather(let city):
+        return URL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(city)")!
+        }
     }
     
     var path: String {
-        switch self {
-        case .weather():
             return ""
-        }
     }
     
     var method: Moya.Method {
         switch self {
-        case .weather():
+        case .weather(_):
             return .get
         }
     }
     
-    var parameters: [String: Any]? {
-        return nil
-    }
-    
-    var parameterEncoding: ParameterEncoding {
-        return URLEncoding.default
-    }
-    
-    var sampleData: Data {
+    var parameters: [String : Any]? {
         switch self {
-        case .weather():
-            return Data()
+       case .weather(_):
+            return [
+                "units": "metric",
+                "APPID": "4899f0f33f91ac6422946c7aaf7598d6"
+            ]
         }
     }
     
+    var parameterEncoding: ParameterEncoding {
+        return URLEncoding.queryString
+    }
+    
+    var sampleData: Data {
+            return Data()
+    }
+    
     var task: Task {
-        return .requestPlain
+        return .requestParameters(parameters: parameters!, encoding: parameterEncoding)
     }
     
     var headers: [String : String]? {
@@ -60,7 +63,7 @@ extension WeatherService: TargetType{
     
     func response(completion: @escaping (_ responseResult: Result<Codable?, ServiceError>) -> Void) -> Completion {
         switch self {
-        case .weather():
+        case .weather(_):
             return { (result) in
                 switch result {
                 case let .success(moyaResponse):

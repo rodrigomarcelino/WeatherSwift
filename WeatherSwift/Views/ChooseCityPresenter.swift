@@ -17,10 +17,16 @@ class ChooseCityPresenter {
     weak var delegate: ChooseCityPresenterDelegate?
     var viewModel: ChooseCityPresenter.ViewModel!
     var provider = MoyaProvider<WeatherService>()
+    var city: String!
     
-    func loadData() {
-        let teste = WeatherService.weather()
-        let weatherService = WeatherService.weather()
+    func sendData(searchText:String){
+        city = searchText
+        loadData()
+    }
+    
+    func loadData(){
+        let teste = WeatherService.weather(city)
+        let weatherService = WeatherService.weather(city)
         
         provider.request(teste, completion: weatherService.response(completion: { (result) in
             switch result {
