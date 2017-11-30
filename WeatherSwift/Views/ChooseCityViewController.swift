@@ -10,8 +10,6 @@ import UIKit
 
 class ChooseCityViewController: UIViewController{
 
-    
-
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
@@ -97,6 +95,7 @@ extension ChooseCityViewController: UISearchBarDelegate{
         var searchText :String? = searchBar.text
         searchBar.resignFirstResponder()
         searchText = searchText?.replacingOccurrences(of: " ", with: "+")
+		searchText = searchText?.folding(options: .diacriticInsensitive, locale: .current)
         searchText = searchText?.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
         if let searchText = searchText{
         presenter.sendData(searchText: searchText)
