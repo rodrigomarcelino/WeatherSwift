@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O7I-Xw-HpZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O7I-Xw-HpZ">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -81,6 +81,7 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="GzT-CQ-C6w" firstAttribute="top" secondItem="G1o-it-4Sv" secondAttribute="bottom" constant="10" id="3tn-sv-ou9"/>
                                     <constraint firstAttribute="trailing" secondItem="L2w-f5-Pgz" secondAttribute="trailing" id="4mZ-2v-uSA"/>
@@ -100,6 +101,9 @@
                                     <constraint firstItem="Gez-Zb-lzW" firstAttribute="top" secondItem="L2w-f5-Pgz" secondAttribute="bottom" constant="10" id="x6j-dp-Fyh"/>
                                     <constraint firstItem="q7m-ob-Evb" firstAttribute="top" secondItem="8pP-fN-xg1" secondAttribute="bottom" constant="10" id="zoB-r2-aQL"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="phW-FK-UYK" appends="YES" id="O03-9o-m7b"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -122,6 +126,7 @@
                         <outlet property="minTempLabel" destination="GzT-CQ-C6w" id="RDi-MU-C1S"/>
                         <outlet property="searchBar" destination="L2w-f5-Pgz" id="fVy-fr-b7s"/>
                         <outlet property="searchDisplayController" destination="odC-6g-xDI" id="DNC-oq-5Hn"/>
+                        <outlet property="tapDismissKeyboard" destination="phW-FK-UYK" id="uXq-Lr-PGr"/>
                         <outlet property="tempLabel" destination="G1o-it-4Sv" id="4If-Ok-S6f"/>
                     </connections>
                 </viewController>
@@ -134,6 +139,11 @@
                         <outlet property="searchResultsDelegate" destination="m4N-aE-Ehr" id="TJq-3n-jPC"/>
                     </connections>
                 </searchDisplayController>
+                <tapGestureRecognizer id="phW-FK-UYK">
+                    <connections>
+                        <action selector="tapDismissKeyboard:" destination="m4N-aE-Ehr" id="2zG-An-YBS"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="160.80000000000001" y="340.47976011994007"/>
         </scene>

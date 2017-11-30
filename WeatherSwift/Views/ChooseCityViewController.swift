@@ -34,6 +34,10 @@ class ChooseCityViewController: UIViewController{
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+	@IBOutlet var tapDismissKeyboard: UITapGestureRecognizer!
+	@IBAction func tapDismissKeyboard(_ sender: Any) {
+		searchBar.resignFirstResponder()
+	}
 }
 
 
@@ -74,6 +78,18 @@ extension ChooseCityViewController: ChooseCityPresenterDelegate {
             }
         }
     }
+	
+	func updateErrView(presenter: ChooseCityPresenter, updateViewModelWith viewModel:ChooseCityPresenter.ViewModel?) {
+		self.cityLabel.text = " "
+		self.tempLabel.text = ""
+		self.humidityLabel.text = ""
+		self.maxTempLabel.text = ""
+		self.minTempLabel.text = ""
+		
+		let alert = UIAlertController(title: "", message: "Não encontramos resultados para essa cidade", preferredStyle: UIAlertControllerStyle.alert)
+		alert.addAction(UIAlertAction(title: "Ok", style: UIAlertActionStyle.default, handler: nil))
+		self.present(alert, animated: true, completion: nil)
+	}
 }
 
 extension ChooseCityViewController: UISearchBarDelegate{

@@ -11,6 +11,7 @@ import Moya
 
 protocol ChooseCityPresenterDelegate: class {
     func updateView(presenter: ChooseCityPresenter, updateViewModelWith viewModel:ChooseCityPresenter.ViewModel?)
+	func updateErrView(presenter: ChooseCityPresenter, updateViewModelWith viewModel:ChooseCityPresenter.ViewModel?)
 }
 
 class ChooseCityPresenter {
@@ -38,6 +39,7 @@ class ChooseCityPresenter {
                 self.delegate?.updateView(presenter: self, updateViewModelWith: self.viewModel)
                 break
             case .failure(_):
+				self.delegate?.updateErrView(presenter: self, updateViewModelWith: self.viewModel)
                 break
             }
         }))
