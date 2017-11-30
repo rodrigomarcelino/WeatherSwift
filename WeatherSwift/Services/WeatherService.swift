@@ -12,6 +12,7 @@ import Result
 
 enum WeatherService {
     case weather(String)
+    case location(String, String)
 }
 
 extension WeatherService: TargetType{
@@ -21,6 +22,8 @@ extension WeatherService: TargetType{
         switch self {
         case .weather(let city):
         return URL(string: "http://api.openweathermap.org/data/2.5/weather?q=\(city)")!
+        case .location(let lat, let long):
+            return URL(string: "http://api.openweathermap.org/data/2.5/weather?lat=\(lat)&lon=\(long)")!
         }
     }
     
@@ -32,12 +35,19 @@ extension WeatherService: TargetType{
         switch self {
         case .weather(_):
             return .get
+        case .location(_,_):
+            return .get
         }
     }
     
     var parameters: [String : Any]? {
         switch self {
        case .weather(_):
+            return [
+                "units": "metric",
+                "APPID": "4899f0f33f91ac6422946c7aaf7598d6"
+            ]
+        case .location(_, _):
             return [
                 "units": "metric",
                 "APPID": "4899f0f33f91ac6422946c7aaf7598d6"
@@ -64,6 +74,29 @@ extension WeatherService: TargetType{
     func response(completion: @escaping (_ responseResult: Result<Codable?, ServiceError>) -> Void) -> Completion {
         switch self {
         case .weather(_):
+            return { (result) in
+                switch result {
+                case let .success(moyaResponse):
+                    let data = moyaResponse.data
+                    if moyaResponse.response?.expectedContentLength == 0 {
+                        completion(.success(nil))
+                        return
+                    }
+                    do {
+                        let responseObject = try JSONDecoder().decode(APIResults.self, from: data)
+                        completion(.success(responseObject))
+                        
+                    } catch {
+                        let mappingError = MoyaError.jsonMapping(moyaResponse)
+                        completion(.failure(ServiceError.moyaError(mappingError)))
+                    }
+                case let .failure(error):
+                    completion(.failure(ServiceError.moyaError(error)))
+                    break
+                }
+                
+            }
+        case .location(_, _):
             return { (result) in
                 switch result {
                 case let .success(moyaResponse):

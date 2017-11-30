@@ -11,16 +11,17 @@ import UIKit
 
 struct APIResults: Codable {
     var name: String?
-    var main: Main
-    var sys: Sys
+    var cod: Int?
+    var main: Mainn?
+    var sys: Sys?
+    var description: [Description]?
     private enum CodingKeys: String, CodingKey {
-        case main = "main", name = "name", sys = "sys"
+        case main = "main", name = "name", sys = "sys", cod = "cod", description = "weather"
     }
 }
 
-struct Main: Codable{
+struct Mainn: Codable{
     var temp: Double?
-    //var tempString =  .decode(String(format:"%.2f",()!))
     var humidity: Double?
     var temp_min: Double?
     var temp_max: Double?
@@ -29,3 +30,8 @@ struct Main: Codable{
 struct Sys: Codable {
     var country: String?
 }
+
+struct Description: Codable{
+    var icon: String?
+}
+

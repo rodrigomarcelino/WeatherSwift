@@ -25,10 +25,10 @@ class ChooseCityPresenter {
     }
     
     func loadData(){
-        let teste = WeatherService.weather(city)
+        let request = WeatherService.weather(city)
         let weatherService = WeatherService.weather(city)
         
-        provider.request(teste, completion: weatherService.response(completion: { (result) in
+        provider.request(request, completion: weatherService.response(completion: { (result) in
             switch result {
             case .success(let weathers):
                 guard let weather = weathers as? APIResults else {
