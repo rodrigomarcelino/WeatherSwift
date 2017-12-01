@@ -7,6 +7,8 @@ target 'WeatherSwift' do
 
   # Pods for WeatherSwift
   pod 'Moya'
+  pod 'SwiftOverlays', '~> 4.0.0'
+  pod 'Gifu'
 
   target 'WeatherSwiftTests' do
     inherit! :search_paths

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftOverlays
 
 class ChooseCityViewController: UIViewController{
 
@@ -18,6 +19,10 @@ class ChooseCityViewController: UIViewController{
     @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var iconImage: UIImageView!
     @IBOutlet weak var background: UIView!
+    @IBOutlet weak var minTempImage: UIImageView!
+    @IBOutlet weak var maxTempImage: UIImageView!
+    @IBOutlet weak var humidityImage: UIImageView!
+    @IBOutlet weak var tempImage: UIImageView!
     
     private var presenter: ChooseCityPresenter = ChooseCityPresenter()
     
@@ -52,19 +57,23 @@ extension ChooseCityViewController: ChooseCityPresenterDelegate {
                 
             }else{
                 
-                if let temp :String = String(format:"%.2f",(viewModel?.weathers.main?.temp)!), let city = viewModel?.weathers.name,
+                if let temp :String = String(format:"%.0f",(viewModel?.weathers.main?.temp)!), let city = viewModel?.weathers.name,
                     let country = viewModel?.weathers.sys?.country , let icon = viewModel?.weathers.description![0].icon,
-                    let humidity:String = String(format:"%.2f",(viewModel?.weathers.main?.humidity)!),
-                    let minTemp:String = String(format:"%.2f",(viewModel?.weathers.main?.temp_min)!),
-                    let maxTemp:String = String(format:"%.2f",(viewModel?.weathers.main?.temp_max)!){
+                    let humidity:String = String(format:"%.0f",(viewModel?.weathers.main?.humidity)!),
+                    let minTemp:String = String(format:"%.0f",(viewModel?.weathers.main?.temp_min)!),
+                    let maxTemp:String = String(format:"%.0f",(viewModel?.weathers.main?.temp_max)!){
                     
                     self.cityLabel.text = " " + city + " - " + country + " "
-                    self.tempLabel.text = "Temperatura :" + temp + "˚C"
-                    self.humidityLabel.text = "Humidade :" + humidity + "%"
-                    self.maxTempLabel.text = "Máxima :" + maxTemp + "˚C"
-                    self.minTempLabel.text = "Mínima :" + minTemp + "˚C"
+                    self.tempLabel.text = temp
+                    self.humidityLabel.text = humidity + "%"
+                    self.maxTempLabel.text = maxTemp + "˚C"
+                    self.minTempLabel.text = minTemp + "˚C"
                     
                     self.iconImage.image = UIImage(named: icon)
+                    self.minTempImage.image = UIImage(named: "minTemp")
+                    self.maxTempImage.image = UIImage(named: "maxTemp")
+                    self.humidityImage.image = UIImage(named: "humidity")
+                    self.tempImage.image = UIImage(named: "celsius")
                     
                     if icon.contains("d"){
                         self.background.backgroundColor = Main.sharedInstance.hexStringToUIColor(hex: "66CCFF")
@@ -75,6 +84,7 @@ extension ChooseCityViewController: ChooseCityPresenterDelegate {
                 
             }
         }
+        self.removeAllOverlays()
     }
 	
 	func updateErrView(presenter: ChooseCityPresenter, updateViewModelWith viewModel:ChooseCityPresenter.ViewModel?) {
@@ -92,6 +102,7 @@ extension ChooseCityViewController: ChooseCityPresenterDelegate {
 
 extension ChooseCityViewController: UISearchBarDelegate{
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.showWaitOverlay()
         var searchText :String? = searchBar.text
         searchBar.resignFirstResponder()
         searchText = searchText?.replacingOccurrences(of: " ", with: "+")
